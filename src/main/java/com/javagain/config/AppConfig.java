@@ -8,6 +8,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import com.javagain.config.security.SecurityConfig;
+
 
 /**
  *  
@@ -18,7 +20,7 @@ import org.springframework.web.servlet.view.JstlView;
  */
 @EnableWebMvc
 @Configuration
-@Import({ HibernateConfig.class })
+@Import({ SecurityConfig.class, HibernateConfig.class })
 @ComponentScan({ "com.javagain.*" })
 public class AppConfig {
 	

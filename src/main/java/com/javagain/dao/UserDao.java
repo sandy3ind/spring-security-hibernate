@@ -1,5 +1,7 @@
 package com.javagain.dao;
 
+import java.util.List;
+
 import com.javagain.entity.User;
 
 /**
@@ -13,17 +15,24 @@ public interface UserDao {
 	/**
 	 * Fetch user by userName
 	 * 
-	 * @param userName
+	 * @param username
 	 * @return
 	 */
-	User findByUserName(String userName);
+	User findByUsername(String username);
 
 	/**
 	 * Save user into database
 	 * 
 	 * @param user
-	 * @return TODO
+	 * @return
 	 */
 	User save(User user);
+	
+	/**
+	 * Return list of users
+	 * 
+	 * @return
+	 */
+	List<User> list();
 
 }

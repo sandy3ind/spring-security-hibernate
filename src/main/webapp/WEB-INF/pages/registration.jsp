@@ -18,6 +18,15 @@
 	border: 1px solid #000;
 }
 .error {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+.field-error {
 	color: red;
 }
 </style>
@@ -25,34 +34,44 @@
 <body>
 	<div id="registration-box">
 		<h2>Registration</h2>
+		<c:if test="${not empty error}">
+			<div class="error">${error}</div>
+		</c:if>
 		<form:form method="POST" modelAttribute="user" action="save">
 			<table>
 				<tr>
 					<td>First Name</td>
 					<td>
 						<form:input type="text" path="firstName" id="firstName"/><br/>
-						<form:errors path="firstName" class="error"/>
+						<form:errors path="firstName" class="field-error"/>
 					</td>	
 				</tr>
 				<tr>
 					<td>Last Name</td>
 					<td>
 						<form:input type="text" path="lastName" id="lastName"/><br/>
-						<form:errors path="lastName" class="error"/>
+						<form:errors path="lastName" class="field-error"/>
 					</td>	
 				</tr>
 				<tr>
 					<td>Username</td>
 					<td>
 						<form:input type="text" path="userName" id="userName"/><br/>
-						<form:errors path="userName" class="error"/>
+						<form:errors path="userName" class="field-error"/>
 					</td>	
 				</tr>
 				<tr>
 					<td>Password</td>
 					<td>
 						<form:input type="password" path="password" id="password"/><br/>
-						<form:errors path="password" class="error"/>
+						<form:errors path="password" class="field-error"/>
+					</td>	
+				</tr>
+				<tr>
+					<td>Roles</td>
+					<td>
+						<form:checkboxes path="roles" items="${roles}" itemLabel="name" itemValue="id" /><br/>
+						<form:errors path="roles" class="field-error"/>
 					</td>	
 				</tr>
 				<tr>
@@ -61,6 +80,7 @@
 				</tr>
 			</table>
 		</form:form>
+		<a href="list">Users list</a>
 	</div>
 </body>
 </html>
