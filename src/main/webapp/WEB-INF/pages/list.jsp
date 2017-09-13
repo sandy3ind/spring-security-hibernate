@@ -8,7 +8,7 @@
 <title>Registration</title>
 <style>
 #list-box {
-	width: 300px;
+	width: 500px;
 	padding: 20px;
 	margin: 100px auto;
 	background: #fff;
@@ -16,18 +16,22 @@
 	-moz-border-radius: 2px;
 	border: 1px solid #000;
 }
+table, td, th {
+  border: 1px solid #000;
+}
 </style>
 </head>
 <body>
 	<div id="list-box">
 		<h2>List of Users</h2>
-		<table>
+		<table style="width: 100%">
 			<thead>
 				<tr>
 					<th>First name</th>
 					<th>Last name</th>
 					<th>Username</th>
 					<th>Roles</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,7 +40,12 @@
 						<td>${user.firstName}</td>
 						<td>${user.lastName}</td>
 						<td>${user.userName}</td>
-						<td>${user.roles}</td>
+						<td>
+							<c:forEach items="${user.userRoles}" var="role">
+								${role.name}
+							</c:forEach>
+						</td>
+						<td><a href="delete?userId=${user.id}">Delete</a></td>
 					</tr>
 				</c:forEach>				
 			</tbody>

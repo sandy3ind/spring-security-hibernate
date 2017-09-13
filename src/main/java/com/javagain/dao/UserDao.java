@@ -35,4 +35,11 @@ public interface UserDao {
 	 */
 	List<User> list();
 
+	/**
+	 * Delete user and its role mapping
+	 * 
+	 * @param userId
+	 */
+	void delete(Long userId);
+
 }

@@ -2,6 +2,7 @@ package com.javagain.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -42,6 +43,13 @@ public class UserDaoImpl implements UserDao {
 	public User save(User user) {
 		sessionFactory.getCurrentSession().save(user);
 		return user;
+	}
+	
+	@Override
+	public void delete(Long userId) {
+		Session session = sessionFactory.getCurrentSession();
+		User user = session.get(User.class, userId);
+		session.delete(user);
 	}
 
 	@SuppressWarnings("unchecked")

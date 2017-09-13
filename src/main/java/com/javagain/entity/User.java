@@ -47,7 +47,8 @@ public class User {
 	@Column(name = "password")
 	private String password;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	// Cascading PERSIST to save relationship and MERGE to remove relationship
+	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "users_roles", 
 		joinColumns = {@JoinColumn(name = "user_id")},
 		inverseJoinColumns = {@JoinColumn(name = "role_id")})

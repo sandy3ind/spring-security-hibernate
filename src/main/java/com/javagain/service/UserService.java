@@ -42,4 +42,11 @@ public interface UserService {
 	 */
 	User getUserByUsername(String username);
 	
+	/**
+	 * Delete user by id
+	 * 
+	 * @param userId
+	 */
+	void delete(Long userId);
+	
 }
